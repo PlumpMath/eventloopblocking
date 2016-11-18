@@ -24,21 +24,27 @@ function printStuff(type, startOrEnd, i) {
 
 }
 
-let asynCounter = 0;
+let asyncCounter = 0;
 
 function asyncRead(i) {
   printStuff('async', 'start', i);
 
   fs.readFile(path)
     .then((data) =>{
+
+      if (asyncCounter === 0) {
+        printRow();
+        console.log('The Async calls have started to callback');
+        printRow();
+      }
+
       printStuff('async', 'end  ', i);
-      asynCounter++;
-      if(asynCounter === 20) {
+      asyncCounter++;
+      if(asyncCounter === 20) {
         printRow();
         console.log('IMPORTANT!! One more important thing to note: This demo is using fs-promise to promisify some of the fs methods.');
         console.log('You might be thinking: "Hey! Why didnt fs-promise promisify the readFileSync???"');
         console.log('Fs-promise only wraps ASYNC fs methods. It does not turn a sync function in an async.');
-        console.log('Using fs-promise in a Promise.all(arr.map(()=>someThingSYNC()) is not going to behave like an async function');
         console.log('');
         console.log('Blocking the event loop is bad. Blocking the event loop inside another loop is EXTRA bad.');
         console.log('If your function needs to wait for the result of an fs operation, use a callback or promisify it and');
@@ -56,6 +62,9 @@ function syncRead(i) {
   printStuff('sync ', 'end  ', i);
 }
 
+printRow();
+console.log('TL:DR => Dont use fs.anythingSync unless you have a really good reason to, like the operation occurs');
+console.log('during the bootstrapping of the app and other modules depend on the results');
 printRow();
 console.log('Async example, the async reads are started, and the "END" console log fires before the calls have returned ');
 console.log('In fact, the callbacks wont be executed until the sync example is finished');
@@ -85,7 +94,6 @@ console.log('This may not seem like a big deal, but we need to remember that nod
 console.log('This means that all users of the app share a signle thread. So if the event loop is blocked');
 console.log('by a Sync operation, every user is going to feel it. Its not just our own execution we need');
 console.log('to think about. Every execution shares the same thread.');
-printRow();
 
 
 
