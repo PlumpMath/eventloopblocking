@@ -34,7 +34,7 @@ function asyncRead(i) {
 
       if (asyncCounter === 0) {
         printRow();
-        console.log('The Async calls have started to callback');
+        console.log('The Async calls have started to callback. The eventloop was not blocked while the files were being read.');
         printRow();
       }
 
@@ -63,7 +63,7 @@ function syncRead(i) {
 }
 
 printRow();
-console.log('TL:DR => Dont use fs.anythingSync unless you have a really good reason to, like the operation occurs');
+console.log('TL:DR => Dont use fs.anythingSYNC unless you have a really good reason to, like the operation occurs');
 console.log('during the bootstrapping of the app and other modules depend on the results');
 printRow();
 console.log('Async example, the async reads are started, and the "END" console log fires before the calls have returned ');
@@ -92,8 +92,8 @@ console.log('SYNC LOOP END');
 console.log('You can see here that the sync reads are fully blocking the event loop.');
 console.log('This may not seem like a big deal, but we need to remember that node is single threaded.');
 console.log('This means that all users of the app share a signle thread. So if the event loop is blocked');
-console.log('by a Sync operation, every user is going to feel it. Its not just our own execution we need');
-console.log('to think about. Every execution shares the same thread.');
+console.log('by a Sync operation, every user is going to feel it. Imagine 50 users, all calling an eventloop blocking loop.');
+console.log('Its not just our own execution we need to think about. Every execution shares the same thread.');
 
 
 
