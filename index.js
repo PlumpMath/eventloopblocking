@@ -40,8 +40,8 @@ function asyncRead(i) {
         console.log('Fs-promise only wraps ASYNC fs methods. It does not turn a sync function in an async.');
         console.log('Using fs-promise in a Promise.all(arr.map(()=>someThingSYNC()) is not going to behave like an async function');
         console.log('');
-        console.log('Blocking the event loop is bad. Blocking the event loop inside a loop is extra bad.');
-        console.log('If you function needs to wait for the result of an fs operation, use a callback or promisify it and');
+        console.log('Blocking the event loop is bad. Blocking the event loop inside another loop is EXTRA bad.');
+        console.log('If your function needs to wait for the result of an fs operation, use a callback or promisify it and');
         console.log('use the results in a "then" block. This way your execution is blocked, but everyone elses execution is not.')
       }
     })
