@@ -1,0 +1,22 @@
+{
+  "name": "eventloopdeom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nateslo/eventLoopDemo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nateslo/eventLoopDemo/issues"
+  },
+  "homepage": "https://github.com/nateslo/eventLoopDemo#readme",
+  "dependencies": {
+    "fs-promise": "^1.0.0"
+  }
+}
