@@ -1,4 +1,4 @@
-# eventLoopDemo
+# eventloopblocking
 
 This is simple demo to show the event loop blockage of sync vs async fs methods.
 
