@@ -66,7 +66,7 @@ printRow();
 console.log('TL:DR => Dont use fs.anythingSYNC unless you have a really good reason to, like the operation occurs');
 console.log('during the bootstrapping of the app and other modules depend on the results');
 printRow();
-console.log('Async example, the async reads are started, and the "END" console log fires before the calls have returned ');
+console.log('Async example, the async reads are started, and the "END" console log fires before the calls have returned.');
 console.log('In fact, the callbacks wont be executed until the sync example is finished');
 
 printRow();
