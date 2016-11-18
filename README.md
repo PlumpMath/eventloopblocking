@@ -1,6 +1,6 @@
 # eventloopblocking
 
-This is simple demo to show the event loop blockage of sync vs async fs methods.
+This is simple demo to show event loop blocking of sync vs async fs methods.
 
 The "testData.html" is just here to exercise fs.readFile and fs.readFileSync. It also happens to be the html for node fs docs :)
 
